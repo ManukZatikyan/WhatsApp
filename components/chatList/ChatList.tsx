@@ -4,8 +4,8 @@ import { styles } from './style';
 import { ChatLists } from '../../types/Interface';
 
 const ChatList: React.FC<ChatLists> = ({ item, index }: ChatLists) => {
-
-    return <View style={styles.chatContainer} key={index}>
+    
+    return <View style={index===0?styles.chatFirstContainer:styles.chatContainer} key={index}>
         <Image source={{ uri: item?.photos }} style={styles.image} />
         <View style={styles.chatContent}>
             <View style={styles.chatHeader}>
