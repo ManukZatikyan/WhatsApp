@@ -13,6 +13,12 @@ export const styles = StyleSheet.create({
 
 
     },
+    chatFirstContainer:{
+        flexDirection: 'row',
+        paddingTop:16,
+        marginRight: 16,
+        marginLeft: 16,
+    },
     chatContainer: {
         flexDirection: 'row',
         marginRight: 16,

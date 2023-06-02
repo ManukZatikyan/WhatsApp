@@ -20,6 +20,7 @@ const Chat = () => {
         data={chatData}
         keyExtractor={(item) => item.id.toString()}
         renderItem={ChatList}
+        // style={}
       />
     </View>
   )
