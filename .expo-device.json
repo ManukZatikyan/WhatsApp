@@ -1,0 +1,18 @@
+{
+    "ios": {
+      "simulators": [
+        
+      ],
+      "devices": [
+        
+      ]
+    },
+    "android": {
+      "emulators": [
+        {
+            "name": "S10 Lite пользователя Manch",
+            "udid": "TP1A.220624.014.G770FXXS7HWD3"
+          }
+      ]
+    }
+  }
