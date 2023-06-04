@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "NativeTest",
-    "slug": "NativeTest",
+    "name": "WhatsApp",
+    "slug": "WhatsApp",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",

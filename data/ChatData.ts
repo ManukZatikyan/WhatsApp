@@ -2,7 +2,7 @@ const DATA=[
     {
         "id":1,
         "name":'Rafik',
-        "photos":"../assets/icon.png",
+        "photos":"../../assets/men.jpg",
         "lastMessage":"I'm Snikers",
         "time":"10:00 AM",
         "totalUnread":2,

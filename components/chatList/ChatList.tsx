@@ -2,11 +2,12 @@ import React from 'react';
 import { View, Image, Text } from 'react-native';
 import { styles } from './style';
 import { ChatLists } from '../../types/Interface';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 
 const ChatList: React.FC<ChatLists> = ({ item, index }: ChatLists) => {
-    
-    return <View style={index===0?styles.chatFirstContainer:styles.chatContainer} key={index}>
-        <Image source={{ uri: item?.photos }} style={styles.image} />
+
+    return <View style={index === 0 ? styles.chatFirstContainer : styles.chatContainer} key={index}>
+        <Image source={require('../../assets/men.jpg')} style={styles.image} />
         <View style={styles.chatContent}>
             <View style={styles.chatHeader}>
                 <Text style={styles.chatName}>{item?.name}</Text>
@@ -30,6 +31,7 @@ const ChatList: React.FC<ChatLists> = ({ item, index }: ChatLists) => {
                 }
             </View>
         </View>
+        
     </View>
 }
 
