@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, FlatList, TouchableOpacity } from 'react-native'
-import { MaterialCommunityIcons } from 'react-native-vector-icons'
+import { MaterialCommunityIcons } from '../../assets/Icons'
 import ChatList from '../chatList/ChatList';
 import { Data } from '../../types/Interface';
 import { styles } from './styles';

@@ -1,6 +1,6 @@
 import { View, Text, StyleSheet } from 'react-native'
 import React from 'react'
-import {Feather,Fontisto,MaterialCommunityIcons } from 'react-native-vector-icons'
+import {Feather,Fontisto,MaterialCommunityIcons } from '../../assets/Icons'
 const Header = () => {
     return (
         <View style={styles.container}>

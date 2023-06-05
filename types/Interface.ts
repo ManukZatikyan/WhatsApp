@@ -11,3 +11,11 @@ export interface ChatLists {
         item: Data,
         index: number
 }
+
+export interface StatusData {
+        id: number;
+        name: string;
+        photos: string;
+        time: string;
+        viewed: boolean;
+}

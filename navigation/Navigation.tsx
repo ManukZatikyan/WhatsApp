@@ -1,7 +1,7 @@
 import { View, Text, StyleSheet } from 'react-native'
 import React from 'react'
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs'
-import { MaterialCommunityIcons } from 'react-native-vector-icons'
+import { MaterialCommunityIcons } from '../assets/Icons'
 
 
 import Chat from '../views/chat/Chat'
