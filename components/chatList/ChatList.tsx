@@ -2,7 +2,6 @@ import React from 'react';
 import { View, Image, Text } from 'react-native';
 import { styles } from './style';
 import { ChatLists } from '../../types/Interface';
-import { TouchableOpacity } from 'react-native-gesture-handler';
 
 const ChatList: React.FC<ChatLists> = ({ item, index }: ChatLists) => {
 
