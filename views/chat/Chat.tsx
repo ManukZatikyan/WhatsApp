@@ -8,7 +8,8 @@ const Chat = () => {
   const [chatData, setChatData] = useState<Data[]>(DATA)
   useEffect(() => {
     setChatData(DATA)
-  })
+  },[])
+ 
   return (
     <ChatScreen chatData={chatData}/>
   )
