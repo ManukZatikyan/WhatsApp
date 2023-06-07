@@ -9,7 +9,7 @@ const Chat = () => {
   useEffect(() => {
     setChatData(DATA)
   },[])
- 
+
   return (
     <ChatScreen chatData={chatData}/>
   )
