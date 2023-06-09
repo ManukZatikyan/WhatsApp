@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import {
   View,
   Text,
-  StyleSheet,
   TouchableOpacity,
   FlatList,
   Image,
@@ -25,6 +24,7 @@ const Calls: React.FC = () => {
   }, []);
   return (
     <View style={styles.container}>
+      
       <TouchableOpacity>
         <View style={styles.callContainer}>
           <View style={styles.linkContainer}>

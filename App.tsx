@@ -17,7 +17,6 @@ export default function App() {
         <Header/>
         <View style={{ flex: 1, backgroundColor: "white" }}>
           <Navigation />
-          
         </View>
       </View>
     </NavigationContainer>
