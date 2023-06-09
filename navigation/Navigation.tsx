@@ -38,6 +38,7 @@ const Navigation = () => {
                 },
                 tabBarLabelStyle:styles.tabBarLabel
               }}
+              
               />
             <Tab.Screen name='Chat' component={Chat} />
             <Tab.Screen name='Status' component={Status} />
