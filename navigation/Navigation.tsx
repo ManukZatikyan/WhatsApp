@@ -8,6 +8,7 @@ import Chat from '../views/chat/Chat'
 import Calls from '../views/calls/Calls'
 import Status from '../views/status/Status'
 import Community from '../views/community/Community'
+import Login from '../views/login/Login'
 
 
 
@@ -15,7 +16,7 @@ const Tab = createMaterialTopTabNavigator()
 const Navigation = () => {
     return (
         <Tab.Navigator
-            initialRouteName='Chat'
+            initialRouteName='Community'
             screenOptions={{
                 tabBarActiveTintColor: 'white',
                 tabBarIndicatorStyle: {
@@ -31,7 +32,7 @@ const Navigation = () => {
         >
             <Tab.Screen
              name='Community'
-              component={Community}
+              component={Login}
               options={{
                 tabBarIcon:({color})=>{
                     return <MaterialCommunityIcons name='account-group' size={24} color={color} />
