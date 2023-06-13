@@ -18,3 +18,4 @@ const Users=[
         password:"Rafi0123"
     }
 ]
+export default Users

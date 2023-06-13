@@ -5,6 +5,7 @@ import { NavigationContainer} from '@react-navigation/native'
 import Navigation from './navigation/Navigation';
 import Header from './components/header/Header';
 import React from 'react';
+import AppNavigationWrapper from './navigation/AppNavigationWrapper';
 export default function App() {
 
   // const osBuildId: string | null = Device.osBuildId;
@@ -13,10 +14,9 @@ export default function App() {
   return (
     <NavigationContainer>
       <View style={styles.container}>
-        <StatusBar style={"dark"} backgroundColor={"#0e806a"} />
-        <Header/>
+        <StatusBar style={"light"} backgroundColor={"#0e806a"} />
         <View style={{ flex: 1, backgroundColor: "white" }}>
-          <Navigation />
+          <AppNavigationWrapper/>
         </View>
       </View>
     </NavigationContainer>
