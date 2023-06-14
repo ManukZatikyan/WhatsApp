@@ -39,5 +39,9 @@ export const styles = StyleSheet.create({
     signupText:{
         padding:30,
         color:'#0e806a'
+    },
+    errorMessageContainer:{
+        alignItems:'center',
+        justifyContent:'center',
     }
 })

@@ -5,7 +5,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createStackNavigator } from "@react-navigation/stack";
 import { MaterialCommunityIcons } from '../assets/Icons'
-
+import {useSelector} from 'react-redux'
 import Chat from '../views/chat/Chat'
 import Calls from '../views/calls/Calls'
 import Status from '../views/status/Status'
@@ -13,6 +13,7 @@ import Community from '../views/community/Community'
 import Login from '../views/login/Login'
 import Navigation from './Navigation';
 import Header from '../components/header/Header'
+import { selectData } from '../redux/auth/authSlice';
 
 
 const Tab = createBottomTabNavigator();
@@ -22,22 +23,9 @@ const Payee = createStackNavigator();
 
 
 const AppNavigationWrapper: React.FC = () => {
-
-    const getMyStringValue = async () => {
-        try {
-            // await AsyncStorage.removeItem('user')
-            // return await AsyncStorage.getItem('user')
-            await AsyncStorage.clear()
-        } catch (e) {
-            console.log(e);
-            
-        }
-        
-    }
-    const [auth, setAuth] = useState(null)
-    useEffect(() => {
-        getMyStringValue
-    }, [])
+    const auth = useSelector(selectData)
+    console.log(auth.id);
+    
 
 
     function DashboardStack() {
@@ -68,7 +56,7 @@ const AppNavigationWrapper: React.FC = () => {
                 header: () => {  return <Header/> ;},
             }}
         >
-            {auth ? (
+            {auth.id  ? (
                 <>
                     <Root.Screen
                         name={"Dashboard"}

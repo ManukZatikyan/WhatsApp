@@ -1,4 +1,11 @@
-const Users=[
+export interface UserData{
+    id:number
+    name:string
+    email:string
+    password:string
+}
+
+const Users:UserData[]=[
     {
         id:1,
         name:"Yura",

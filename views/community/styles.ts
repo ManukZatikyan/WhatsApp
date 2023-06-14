@@ -39,5 +39,11 @@ export const styles = StyleSheet.create({
         width:'100%',
         justifyContent:'center',
         alignItems:'center'
+    },
+    logoutContainer:{
+        top:180,
+        width:'100%',
+        justifyContent:'center',
+        alignItems:'center'
     }
 })
