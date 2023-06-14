@@ -4,9 +4,11 @@ import { styles } from './styles';
 interface Props {
   children: string
   onPress: VoidFunction
-  disabled: boolean
+  disabled?: boolean
+  width:number | string
+  height:number | string
 }
-const TextButton: React.FC<Props> = ({ children, onPress, disabled }) => {
+const TextButton: React.FC<Props> = ({ children, onPress, disabled,width,height }) => {
   // const [press, setPress] = useState<boolean>(true)
   // const underlayColor = () => {
   //   console.log('====================================');
@@ -14,7 +16,7 @@ const TextButton: React.FC<Props> = ({ children, onPress, disabled }) => {
   //   console.log('====================================');
   //   setPress(!press)
   // }
-  return <TouchableOpacity onPress={onPress} disabled={disabled} style={styles.button} activeOpacity={0.5} >
+  return <TouchableOpacity onPress={onPress} disabled={disabled?disabled:false} style={[styles.button,{width:width,height:height}]} activeOpacity={0.5} >
     <View >
       <Text style={{ color: '#fff' }}>{children}</Text>
     </View>

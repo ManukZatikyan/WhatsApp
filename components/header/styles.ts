@@ -12,6 +12,7 @@ import { StyleSheet } from 'react-native'
         alignItems: "center",
         justifyContent: "space-between",
         marginHorizontal: 16,
+        
     },
     headerText: {
         fontSize: 20,
