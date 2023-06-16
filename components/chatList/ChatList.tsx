@@ -1,7 +1,7 @@
-import React from 'react';
+import { ChatLists } from '../../types/Interface';
 import { View, Image, Text } from 'react-native';
 import { styles } from './style';
-import { ChatLists } from '../../types/Interface';
+import React from 'react';
 
 const ChatList: React.FC<ChatLists> = ({ item, index }: ChatLists) => {
 
@@ -30,7 +30,6 @@ const ChatList: React.FC<ChatLists> = ({ item, index }: ChatLists) => {
                 }
             </View>
         </View>
-        
     </View>
 }
 

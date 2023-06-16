@@ -1,16 +1,16 @@
-import React from 'react';
 import { View, FlatList, TouchableOpacity } from 'react-native'
 import { MaterialCommunityIcons } from '../../assets/Icons'
-import ChatList from '../chatList/ChatList';
 import { Data } from '../../types/Interface';
+import ChatList from '../chatList/ChatList';
 import { styles } from './styles';
+import React from 'react';
 
 
 interface Props {
     chatData: Data[],
 }
 
-const ChatScreen: React.FC<Props> = ({ chatData }: Props) => {
+const ChatListScreen: React.FC<Props> = ({ chatData }: Props) => {
     return (
         <View style={styles.container}>
             <FlatList
@@ -29,4 +29,4 @@ const ChatScreen: React.FC<Props> = ({ chatData }: Props) => {
     );
 }
 
-export default ChatScreen;
+export default ChatListScreen;

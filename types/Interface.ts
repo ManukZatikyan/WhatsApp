@@ -19,3 +19,11 @@ export interface StatusData {
         time: string;
         viewed: boolean;
 }
+
+export interface Chats {
+        fromId: number
+        toId: number
+        message: string
+        time: string
+        seen: boolean
+}

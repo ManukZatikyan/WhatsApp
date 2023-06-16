@@ -1,15 +1,15 @@
-import React from 'react';
 import { Image, Text, View } from 'react-native';
 import { styles } from './styles';
+import React from 'react';
 
-interface Props{
-    text:boolean
+interface Props {
+    text: boolean
 }
 
-const Logo: React.FC<Props> = ({text}) => {
+const Logo: React.FC<Props> = ({ text }) => {
     return <View style={styles.container}>
         {text && <Text style={styles.text}>From</Text>}
-        <Image source={require('../../assets/zatikyan-logo.png')}  style={styles.image}></Image>
+        <Image source={require('../../assets/zatikyan-logo.png')} style={styles.image}></Image>
     </View>;
 }
 

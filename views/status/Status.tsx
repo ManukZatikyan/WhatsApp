@@ -1,18 +1,14 @@
 import { View, Text, Image, FlatList, TouchableOpacity } from 'react-native'
 import React, { useEffect, useRef, useState } from 'react'
-import { styles } from './styles'
-import STATUSDATA from '../../data/StatusData'
-import { FontAwesome5 } from '../../assets/Icons'
 import { StatusData } from '../../types/Interface'
-import { Camera } from 'expo-camera';
+import { FontAwesome5 } from '../../assets/Icons'
 import * as ImagePicker from 'expo-image-picker';
+import STATUSDATA from '../../data/StatusData'
+import { styles } from './styles'
 
 const Status = () => {
   const [statusData, setStatusData] = useState<StatusData[]>(STATUSDATA)
   const camera = useRef(null)
-
-
-
   useEffect(() => {
     setStatusData(STATUSDATA)
   }, [])
@@ -20,71 +16,29 @@ const Status = () => {
     { 'title': 'recent updates', data: statusData.filter(item => item.viewed === false) },
     { 'title': 'Viewed updates', data: statusData.filter(item => item.viewed === true) },
   ]
+
+
+
   const openCamera = async () => {
-    const x = ImagePicker.requestCameraPermissionsAsync();
+    const permission = await ImagePicker.requestCameraPermissionsAsync();
+    // if (permission.granted === false)
 
-
-    // if (status !== 'granted') {
-    //   alert('Permission to access camera was denied');
-    //   return;
-    // }
-  
-    // console.log(status);
-    
-    const result = ImagePicker.launchCameraAsync({
+    console.log(permission,'premisison');
+    const result = await ImagePicker.launchCameraAsync({
       mediaTypes: ImagePicker.MediaTypeOptions.Images,
       allowsEditing: true,
-      aspect: [4, 3],
-      quality: 1,
+      aspect: [1,1],
+      quality: 0.5,
     });
-  console.log(result);
-  
-    // if (!result.cancelled) {
-    //   // Handle the captured photo or video here
-    //   console.log(result.uri);
-    // }
+    console.log(result,'result');
   };
 
-
-  const takePicture = async () => {
-    
-    let x = await Camera.requestPermissionsAsync();
-    if (x.granted) {
-      const isCameraAvailable = await Camera.isAvailableAsync();
-      console.log('====================================');
-      console.log(isCameraAvailable);
-      console.log('====================================');
-      if (isCameraAvailable) {
-        // Camera is available, you can start using it
-      } else {
-        // Camera is not available on the device
-      }
-    } else {
-      // Camera permission not granted
-    }
-
-    if (camera) {
-      
-      const options = { quality: 0.5, base64: true };
-      // @ts-ignore
-      const data = await camera.current.takePictureAsync(options);
-    }
-
-  };
-
+  const openGallery = async () => {
+    const permission = await ImagePicker.requestMediaLibraryPermissionsAsync();
+    // if (permission.granted === false)
+  }
   return (
     <View style={styles.container}>
-
-      {/* <Camera
-        ref={camera}
-        style={styles.preview}
-        // @ts-ignore
-        type={Camera.Constants.Type.back}
-      />
-      <TouchableOpacity onPress={openCamera}>
-        <Text>Take Picture</Text>
-      </TouchableOpacity> */}
-
       <View style={styles.myStatusContainer}>
         <View>
           <Image source={require('../../assets/men.jpg')} style={styles.image} />
@@ -122,7 +76,7 @@ const Status = () => {
       />
       <TouchableOpacity
         style={styles.writeButton}
-        onPress={openCamera}
+        onPress={openGallery}
       >
         <FontAwesome5 name='pen' size={18} color='grey' />
       </TouchableOpacity>

@@ -1,15 +1,16 @@
-import { View, Text, TouchableOpacity } from 'react-native'
-import React, { useEffect } from 'react'
 import { Feather, Fontisto, MaterialCommunityIcons } from '../../assets/Icons'
+import { View, Text, TouchableOpacity } from 'react-native'
 import { styles } from './styles'
+import React from 'react'
 
 import { useNavigationState } from '@react-navigation/native';
+
 const Header = () => {
 
     const navigationState = useNavigationState(state => state);
     const currentRoute = navigationState?.routes[navigationState.index];
     const tabScreenName = currentRoute?.name;
-   
+
     return (
         <View style={styles.container}>
             <View style={styles.headerContainer}>
