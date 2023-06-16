@@ -1,6 +1,5 @@
-import React, { useEffect, useRef } from 'react';
 import { Image, View, Animated, Easing } from 'react-native';
-
+import React, { useEffect, useRef } from 'react';
 import { styles } from './styles';
 
 const Loading: React.FC = () => {

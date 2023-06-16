@@ -1,4 +1,12 @@
 import React, { useState, useEffect } from "react";
+import { Data } from "../../types/Interface";
+import DATA from "../../data/ChatData";
+import { styles } from "./styles";
+import {
+  Fontisto,
+  MaterialIcons,
+  MaterialCommunityIcons,
+} from "../../assets/Icons";
 import {
   View,
   Text,
@@ -7,14 +15,6 @@ import {
   Image,
 } from "react-native";
 
-import {
-  Fontisto,
-  MaterialIcons,
-  MaterialCommunityIcons,
-} from "../../assets/Icons";
-import DATA from "../../data/ChatData";
-import { styles } from "./styles";
-import { Data } from "../../types/Interface";
 
 const Calls: React.FC = () => {
   const [callData, setCallData] = useState<Data[]>(DATA);
@@ -24,11 +24,10 @@ const Calls: React.FC = () => {
   }, []);
   return (
     <View style={styles.container}>
-      
       <TouchableOpacity>
         <View style={styles.callContainer}>
           <View style={styles.linkContainer}>
-              <Fontisto name='link' size={22} color='white'/>
+            <Fontisto name='link' size={22} color='white' />
           </View>
           <View>
             <Text style={styles.callLink}>Create a call link</Text>
@@ -38,29 +37,29 @@ const Calls: React.FC = () => {
       </TouchableOpacity>
       <Text style={styles.recentText}>Recent</Text>
       <FlatList
-          data={callData}
-          keyExtractor={(item)=>item.id.toString()}
-          renderItem={({item})=>(
-            <View style={styles.callContainer}>
-              <Image style={styles.image} source={require('../../assets/men.jpg')}/>
-              <View style={styles.callIconContainer}>
-                  <Text style={styles.callName}>{item.name}</Text>
-                  <View style={styles.callDetails}>
-                        <MaterialCommunityIcons name='call-received' size={15} color='#075e54'/>
-                        <Text style={styles.callTime}>{item.time}</Text>  
-                  </View>
+        data={callData}
+        keyExtractor={(item) => item.id.toString()}
+        renderItem={({ item }) => (
+          <View style={styles.callContainer}>
+            <Image style={styles.image} source={require('../../assets/men.jpg')} />
+            <View style={styles.callIconContainer}>
+              <Text style={styles.callName}>{item.name}</Text>
+              <View style={styles.callDetails}>
+                <MaterialCommunityIcons name='call-received' size={15} color='#075e54' />
+                <Text style={styles.callTime}>{item.time}</Text>
               </View>
-              <TouchableOpacity>
-                <MaterialIcons name='call' size={25} color='#075e54'/>
-              </TouchableOpacity>
             </View>
-          )}
+            <TouchableOpacity>
+              <MaterialIcons name='call' size={25} color='#075e54' />
+            </TouchableOpacity>
+          </View>
+        )}
       />
       <TouchableOpacity
         style={styles.callButton}
-        onPress={()=>('#')}
+        onPress={() => ('#')}
       >
-        <MaterialIcons name='add-call' size={22} color='white'/>
+        <MaterialIcons name='add-call' size={22} color='white' />
       </TouchableOpacity>
     </View>
   );

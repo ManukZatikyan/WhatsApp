@@ -1,20 +1,10 @@
-import React, { useEffect } from 'react';
+import LoginScreens from '../../components/loginScreen/LoginScreen';
+import Logo from '../../components/Logo/Logo';
 import {  View } from 'react-native';
 import { styles } from './styles';
-import Logo from '../../components/Logo/Logo';
-import { Appearance, useColorScheme } from 'react-native'
-import LoginScreens from '../../components/loginScreen/LoginScreen';
+import React from 'react';
 
 const Login: React.FC = () => {
-  // let colorScheme = useColorScheme();
-  // useEffect(()=>{
-  //   console.log(1);
-    
-  //   console.log(colorScheme);
-  //   console.log(1)
-  // },[])
-
-
 
   return (
     <View style={styles.container}>

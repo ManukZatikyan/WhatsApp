@@ -1,14 +1,13 @@
-import React from 'react'
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs'
-
-
-
-
-
+import Header from '../components/header/Header'
+import React from 'react'
 
 const Tab = createMaterialTopTabNavigator()
+
 const Navigation = ({ children }: any) => {
     return (
+        <>
+        <Header/>
         <Tab.Navigator
             initialRouteName='Community'
             screenOptions={{
@@ -21,11 +20,12 @@ const Navigation = ({ children }: any) => {
                 },
                 tabBarStyle: {
                     backgroundColor: '#0e806a',
-                }
+                },
             }}
         >
             {children}
         </Tab.Navigator>
+        </>
     )
 }
 
