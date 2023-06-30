@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Data } from "../../types/Interface";
 import DATA from "../../data/ChatData";
 import { styles } from "./styles";
+import { useAppDispatch } from "../../redux/hook";
 import {
   Fontisto,
   MaterialIcons,
@@ -18,7 +19,7 @@ import {
 
 const Calls: React.FC = () => {
   const [callData, setCallData] = useState<Data[]>(DATA);
-
+  const dispatch=useAppDispatch()
   useEffect(() => {
     setCallData(DATA);
   }, []);
@@ -57,7 +58,7 @@ const Calls: React.FC = () => {
       />
       <TouchableOpacity
         style={styles.callButton}
-        onPress={() => ('#')}
+        onPress={() =>console.log(1)}
       >
         <MaterialIcons name='add-call' size={22} color='white' />
       </TouchableOpacity>

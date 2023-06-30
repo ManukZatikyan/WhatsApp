@@ -1,50 +1,88 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import Users, { UserData } from "../../data/Users";
 import { RootState } from "../store";
+import axiosClient from "../../axiosConfig/axiosApi";
+import { Login } from "../../types/Interface";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import axios from "axios";
+export interface UserData {
+    userId: number
+    name: string
+    surname: string
+    email: string
+    password: string
+    photo: string
+    phoneNumber: string
+    phoneNumberVerify: boolean
+    emailVerify: boolean
 
+}
 export interface AuthState {
-    data: UserData,
+    user: UserData,
     loading?: boolean,
     error?: any,
-    message?: string,
+    message?: string | undefined,
     success?: boolean,
 }
 const initialState: AuthState = {
-    data: {
-        id: NaN,
+    user: {
+        userId: NaN,
         name: "",
         email: "",
-        password: ""
+        password: "",
+        surname: "",
+        photo: "",
+        phoneNumber: "",
+        phoneNumberVerify: false,
+        emailVerify: false,
     },
     message: '',
 }
-
+export const loginUser = createAsyncThunk<
+    string,
+    Login,
+    { rejectValue: string }
+>('auth/login', async function (user, { rejectWithValue }) {
+        const responce: any = await axiosClient.post('auth/login',user)
+        console.log(responce.data,'------------')
+        if (responce.data.accessToken) {
+            AsyncStorage.setItem('token', responce.data.accessToken);
+            const User:any=await axiosClient.get('auth/get-user')
+            // console.log("USER",User.data,"-----------")
+            return {user:User.data,message:User.data.message}
+        }else{
+            return responce.data.message;
+        }
+});
 
 export const authSlice = createSlice({
     name: 'auth',
     initialState,
     reducers: {
-        loginUser: (state, action) => {
-            let user = Users.filter(elem => elem.email === action.payload.email && elem.password === action.payload.password)
-            if (user.length) {
-                state.data = user[0]
-            } else {
-                state.message = 'error'
-            }
-        },
         logOutUser: (state) => {
-            state.data={
-                id: NaN,
+            state.user = {
+                userId: NaN,
                 name: "",
                 email: "",
-                password: ""
+                password: "",
+                surname: "",
+                photo: "",
+                phoneNumber: "",
+                phoneNumberVerify: false,
+                emailVerify: false,
             };
-            state.message=''
+            state.message = ''
         }
     },
-    extraReducers: () => { }
+    extraReducers: (build) => {
+        build.addCase(loginUser.fulfilled, (state, action) => {
+            // console.log("Slice", action.payload.user)
+            //@ts-ignore
+            state.message = action.payload.message
+            //@ts-ignore
+            state.user=action.payload.user
+        })
+    }
 })
-export const selectData = (state: RootState) => state.auth.data
+export const selectUser = (state: RootState) => state.auth.user
 export const selectmessage = (state: RootState) => state.auth.message
-export const { loginUser} = authSlice.actions
-export const { logOutUser} = authSlice.actions
+export const { logOutUser } = authSlice.actions

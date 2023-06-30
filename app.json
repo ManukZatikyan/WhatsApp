@@ -15,14 +15,19 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.zatikyan.WhatsApp"
     },
     "android": {
-      "permissions": ["CAMERA"],
+      "permissions": [
+        "android.permission.CAMERA",
+        "android.permission.RECORD_AUDIO"
+      ],
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.zatikyan.WhatsApp"
     },
     "web": {
       "favicon": "./assets/favicon.png"
@@ -33,7 +38,25 @@
         {
           "photosPermission": "The app accesses your photos to let you share them with your friends."
         }
-      ]
+      ],
+      [
+      "expo-build-properties",
+      {
+        "android": {
+          "compileSdkVersion": 31,
+          "targetSdkVersion": 31,
+          "buildToolsVersion": "31.0.0"
+        },
+        "ios": {
+          "deploymentTarget": "13.0"
+        }
+      }
     ]
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "d0054083-afdb-42c3-ad68-fd02afd9466c"
+      }
+    }
   }
 }

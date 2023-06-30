@@ -12,18 +12,14 @@ export interface ChatLists {
         index: number
 }
 
-export interface StatusData {
-        id: number;
-        name: string;
-        photos: string;
-        time: string;
-        viewed: boolean;
-}
-
 export interface Chats {
-        fromId: number
-        toId: number
-        message: string
+        _id: string
+        author: string
+        body: string
         time: string
         seen: boolean
+}
+export interface Login{
+        emailOrPhoneNumber:string
+        password:string
 }

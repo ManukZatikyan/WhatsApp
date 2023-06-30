@@ -1,28 +1,48 @@
-export interface UserData{
-    id:number
-    name:string
-    email:string
-    password:string
+export interface UserData {
+    userId: number
+    name: string
+    surname: string
+    email: string
+    password: string
+    photo: string
+    phoneNumber: string
+    phoneNumberVerify: boolean
+    emailVerify: boolean
+
 }
 
-const Users:UserData[]=[
+const Users: UserData[] = [
     {
-        id:1,
-        name:"Yura",
-        email:"yura@gmail.com",
-        password:"Yura0123"
+        userId: 1,
+        name: "Yura",
+        surname: "Alaverdyan",
+        email: "yura@gmail.com",
+        password: "Yura0123",
+        photo: "string",
+        phoneNumber: "string",
+        phoneNumberVerify: true,
+        emailVerify: true,
     },
     {
-        id:2,
-        name:"Manuk",
-        email:"Manuk@gmail.com",
-        password:"Manuk0123"
+        userId: 2,
+        name: "Manuk",
+        surname: "Zatikyan",
+        email: "Manuk@gmail.com",
+        password: "Manuk0123",
+        photo: "string",
+        phoneNumber: "string",
+        phoneNumberVerify: true,
+        emailVerify: true,
     },
     {
-        id:3,
-        name:"Rafi",
-        email:"Rafi@gmail.com",
-        password:"Rafi0123"
+        userId: 3,
+        name: "Rafi",
+        surname: "Antonyan",
+        email: "Rafi@gmail.com",
+        password: "Rafi0123",
+        photo: "string",
+        phoneNumber: "string",
+        phoneNumberVerify: true,
+        emailVerify: true,
     }
 ]
-export default Users

@@ -2,34 +2,32 @@ import React, { useState } from 'react';
 import { Text, TextInput, View } from 'react-native';
 import { styles } from './styles';
 import TextButton from '../textButton/TextButton';
-import { useDispatch } from "react-redux";
+import { Login } from '../../types/Interface';
 import { loginUser } from '../../redux/auth/authSlice';
-
-interface User {
-    email: string
-    password: string
-}
+import { useAppDispatch } from '../../redux/hook';
 
 
 const LoginScreens: React.FC = () => {
     const [errorMessage, setErrorMessage] = useState<boolean>(false)
-    const [user, setUser] = useState<User>({ email: 'Manuk@gmail.com', password: 'Manuk0123' })
-    const dispatch = useDispatch();
-    const handleLogin = async (LoginUser: User) => {
+    const [user, setUser] = useState<Login>({ emailOrPhoneNumber: 'zatikyanmanch@gmail.com', password: 'manuk777' })
+    const dispatch=useAppDispatch()
+    const handleLogin = async (LoginUser: Login) => {
         // if () {
         //     setErrorMessage(false)
         // } else {
         //     setErrorMessage(true)
         // }
-        dispatch(loginUser(LoginUser))
+        dispatch(loginUser(LoginUser)).unwrap()
     }
-
+    function data(){
+        
+    }
     return (<View style={styles.container}>
         <View style={styles.titleContainer}>
             <Text style={styles.title}>Կարաս մտնես друг мой</Text>
         </View>
-        <Text style={styles.inputLabel}>Email</Text>
-        <TextInput style={styles.input} selectionColor={'#0e806a'} onChangeText={(email) => setUser({ ...user, email: email })} value={user.email} />
+        <Text style={styles.inputLabel}>Email Or Phone Number</Text>
+        <TextInput style={styles.input} selectionColor={'#0e806a'} onChangeText={(emailOrPhoneNumber) => setUser({ ...user, emailOrPhoneNumber: emailOrPhoneNumber })} value={user.emailOrPhoneNumber} />
         <Text style={styles.inputLabel}>Password</Text>
         <TextInput style={styles.input} selectionColor={'#0e806a'} onChangeText={(password) => setUser({ ...user, password: password })} secureTextEntry={true} value={user.password} />
         <View style={styles.buttonContainer}>
