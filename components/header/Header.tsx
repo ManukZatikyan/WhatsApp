@@ -2,15 +2,20 @@ import { Feather, Fontisto, MaterialCommunityIcons } from '../../assets/Icons'
 import { View, Text, TouchableOpacity } from 'react-native'
 import { styles } from './styles'
 import React from 'react'
-
+import { useAppDispatch } from '../../redux/hook'
 import { useNavigationState } from '@react-navigation/native';
-
+import { logOutUser } from '../../redux/auth/authSlice'
 const Header = () => {
 
     const navigationState = useNavigationState(state => state);
     const currentRoute = navigationState?.routes[navigationState.index];
     const tabScreenName = currentRoute?.name;
-
+    const dispatch=useAppDispatch();
+    const LogOutUser=()=>{
+        console.log(1);
+        dispatch(logOutUser())
+        
+    }
     return (
         <View style={styles.container}>
             <View style={styles.headerContainer}>
@@ -27,9 +32,9 @@ const Header = () => {
                         <Fontisto name='search' size={20} color='white' style={styles.icon} />
                     </TouchableOpacity>}
                     <TouchableOpacity
-                        onPress={() => { console.log(3) }}
+                        onPress={LogOutUser}
                     >
-                        <MaterialCommunityIcons name='dots-vertical' size={20} color='white' style={styles.icon} />
+                        <MaterialCommunityIcons name='logout' size={20} color='white' style={styles.icon} />
                     </TouchableOpacity>
                 </View>
             </View>

@@ -1,7 +1,6 @@
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs'
 import Header from '../components/header/Header'
 import React from 'react'
-
 const Tab = createMaterialTopTabNavigator()
 
 const Navigation = ({ children }: any) => {

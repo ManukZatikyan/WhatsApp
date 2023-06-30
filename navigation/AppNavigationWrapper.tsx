@@ -1,24 +1,22 @@
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { MaterialCommunityIcons } from '../assets/Icons';
-import { selectData } from '../redux/auth/authSlice';
-import Community from '../views/community/Community';
+import { selectUser } from '../redux/auth/authSlice';
 import Status from '../views/status/Status';
 import { StyleSheet } from 'react-native';
 import Calls from '../views/calls/Calls';
 import Login from '../views/login/Login';
-import {useSelector} from 'react-redux';
 import Navigation from './Navigation';
 import ChatScreen from '../views/chatScreen/ChatScreen';
 import React from 'react';
-import TestView from '../views/testView/TestView';
 import ChatFace from '../components/chatFace/ChatFace';
+import { useAppSelector } from '../redux/hook';
 
 const Tab = createMaterialTopTabNavigator();
 const Root = createNativeStackNavigator();
 
 const AppNavigationWrapper: React.FC = () => {
-    const auth = useSelector(selectData)
+    const auth = useAppSelector(selectUser)
     function DashboardStack() {
         return (
             <Navigation>
@@ -38,10 +36,9 @@ const AppNavigationWrapper: React.FC = () => {
             </Navigation>
         );
     }
-
     return <>
         <Root.Navigator>
-            {auth.id  ? (
+            { auth.userId ? (
                 <>
                     <Root.Screen
                         name={"Dashboard"}
@@ -63,11 +60,7 @@ const AppNavigationWrapper: React.FC = () => {
         </Root.Navigator>
     </>;
 }
-
 export default AppNavigationWrapper;
-
-
-
 const styles = StyleSheet.create({
     tabBarLabel: {
         display: 'none'

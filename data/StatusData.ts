@@ -22,7 +22,7 @@ const STATUSDATA=[
     },
     {
         id:4,
-        name:'Shuan',
+        name:'Karen',
         photos:require('../assets/men.jpg'),
         time:"Today, 10:00 AM",
         viewed:false 
