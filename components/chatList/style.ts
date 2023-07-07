@@ -2,7 +2,7 @@ import { StyleSheet } from 'react-native'
 
 
 export const styles = StyleSheet.create({
-   
+
     image: {
         width: 50,
         height: 50,
@@ -13,9 +13,9 @@ export const styles = StyleSheet.create({
 
 
     },
-    chatFirstContainer:{
+    chatFirstContainer: {
         flexDirection: 'row',
-        paddingTop:16,
+        paddingTop: 16,
         marginRight: 16,
         marginLeft: 16,
     },
@@ -52,21 +52,30 @@ export const styles = StyleSheet.create({
     },
     chatMessage: {
         fontSize: 14,
-        color:'#a0a09e',
-        width:'90%'
+        color: '#a0a09e',
+        width: '90%'
+    },
+    chatBoldMessage: {
+        fontSize: 14,
+        color: '#000',
+        width: '90%',
+        fontWeight: 700
     },
     totalUnread: {
-        fontSize:10,
-        color:'#fff',
-        fontWeight:'600' 
+        fontSize: 10,
+        color: '#fff',
+        fontWeight: '600'
     },
     unreadContainer: {
-        height:20,
-        width:25,
-        borderRadius:20,
-        backgroundColor:'#25d366',
-        alignItems:'center',
-        justifyContent:'center'
+        height: 20,
+        width: 20,
+        borderRadius: 20,
+        backgroundColor: '#25d366',
+        alignItems: 'center',
+        justifyContent: 'center'
     },
-   
+    mark: {
+        height: 15,
+        width: 20
+    },
 })

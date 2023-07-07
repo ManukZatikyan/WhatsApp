@@ -8,8 +8,9 @@ export interface Data {
 
 }
 export interface ChatLists {
-        item: Data,
+        item: any,
         index: number
+        navigation:any
 }
 
 export interface Chats {
