@@ -43,7 +43,7 @@ export const loginUser = createAsyncThunk<
     { rejectValue: string }
 >('auth/login', async function (user, { rejectWithValue }) {
         const responce: any = await axiosClient.post('auth/login',user)
-        console.log(responce.data,'------------')
+        // console.log(responce.data,'------------')
         if (responce.data.accessToken) {
             AsyncStorage.setItem('token', responce.data.accessToken);
             const User:any=await axiosClient.get('auth/get-user')

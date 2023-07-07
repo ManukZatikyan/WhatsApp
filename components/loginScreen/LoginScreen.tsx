@@ -10,6 +10,7 @@ import { useAppDispatch } from '../../redux/hook';
 const LoginScreens: React.FC = () => {
     const [errorMessage, setErrorMessage] = useState<boolean>(false)
     const [user, setUser] = useState<Login>({ emailOrPhoneNumber: 'zatikyanmanch@gmail.com', password: 'manuk777' })
+    // const [user, setUser] = useState<Login>({ emailOrPhoneNumber: 'yuraalaverdyan@gmail.com', password: 'yura777' })
     const dispatch=useAppDispatch()
     const handleLogin = async (LoginUser: Login) => {
         // if () {

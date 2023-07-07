@@ -6,27 +6,30 @@ import { styles } from './styles';
 import React from 'react';
 
 
+
 interface Props {
-    chatData: Data[],
+    chatData: any[],
+    navigation:any
 }
 
-const ChatListScreen: React.FC<Props> = ({ chatData }: Props) => {
+const ChatListScreen: React.FC<Props> = ({ chatData,navigation }: Props) => {
     return (
-        <View style={styles.container}>
-            <FlatList
-                data={chatData}
-                keyExtractor={(item) => item.id.toString()}
-                renderItem={ChatList}
-            // style={}
-            />
+        <>
+            <View style={styles.container}>
+                {
+                    chatData?.map((item:any,index:number)=>{
+                        return <ChatList navigation={navigation}  item={item} index={index} key={item._id}/>
+                    })
+                }
+            </View>
             <TouchableOpacity
                 style={styles.chatButton}
                 onPress={() => ('#')}
             >
                 <MaterialCommunityIcons name='android-messages' size={24} color='white' />
             </TouchableOpacity>
-        </View>
-    );
+        </>
+        );
 }
 
 export default ChatListScreen;

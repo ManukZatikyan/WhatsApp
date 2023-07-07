@@ -11,6 +11,8 @@ import ChatScreen from '../views/chatScreen/ChatScreen';
 import React from 'react';
 import ChatFace from '../components/chatFace/ChatFace';
 import { useAppSelector } from '../redux/hook';
+import MessageScreen from '../views/messageScreen/MessageScreen';
+import Community from '../views/community/Community';
 
 const Tab = createMaterialTopTabNavigator();
 const Root = createNativeStackNavigator();
@@ -22,7 +24,7 @@ const AppNavigationWrapper: React.FC = () => {
             <Navigation>
                 <Tab.Screen
                     name='Community'
-                    component={ChatFace}
+                    component={Community}
                     options={{
                         tabBarIcon: ({ color }) => {
                             return <MaterialCommunityIcons name='account-group' size={24} color={color} />
@@ -43,6 +45,11 @@ const AppNavigationWrapper: React.FC = () => {
                     <Root.Screen
                         name={"Dashboard"}
                         component={DashboardStack}
+                        options={{ headerShown: false }}
+                    />
+                    <Root.Screen
+                        name={"MessageScreen"}
+                        component={MessageScreen}
                         options={{ headerShown: false }}
                     />
                 </>
