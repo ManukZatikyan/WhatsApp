@@ -1,11 +1,11 @@
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import axios from 'axios';
+import GetIp from '../utils/GetIp';
 const axiosClient = axios.create({ withCredentials: true });
-
-axiosClient.defaults.baseURL = 'http://192.168.1.24:7000';
+  axiosClient.defaults.baseURL = `http://192.168.1.16:7000/`;
 
 axiosClient.defaults.headers["Content-Type"]="application/json";
-axiosClient.defaults.headers["Access-Control-Allow-Origin"]='http://192.168.1.24:7000'
+axiosClient.defaults.headers["Access-Control-Allow-Origin"]='http://192.168.1.16:7000/'
 
 axiosClient.defaults.timeout = 10000;
 

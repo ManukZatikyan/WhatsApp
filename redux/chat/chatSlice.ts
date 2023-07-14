@@ -22,8 +22,7 @@ interface ChatState {
 }
 
 const initialState: ChatState = {
-    chat:[]
-
+    chat: []
 }
 
 export const getUsderChats = createAsyncThunk<
@@ -38,11 +37,11 @@ export const getUsderChats = createAsyncThunk<
         return responce;
     }
 });
-export const getUsersMessage= createAsyncThunk<
-any,
-any,
-{ rejectValue: string }
->('get-chat-messages',async function (chatId, { rejectWithValue }) {
+export const getUsersMessage = createAsyncThunk<
+    any,
+    any,
+    { rejectValue: string }
+>('get-chat-messages', async function (chatId, { rejectWithValue }) {
     const responce: any = await axiosClient.post('chat/get-chat-messages', chatId)
     if (responce.data) {
         return responce.data
@@ -50,11 +49,11 @@ any,
         return responce;
     }
 })
-export const add_Message= createAsyncThunk<
-any,
-any,
-{ rejectValue: string }
->('add-message',async function (newMessage, { rejectWithValue }) {
+export const add_Message = createAsyncThunk<
+    any,
+    any,
+    { rejectValue: string }
+>('add-message', async function (newMessage, { rejectWithValue }) {
     const responce: any = await axiosClient.post('chat/add-message', newMessage)
     // if (responce.data) {
     //     return responce.data
@@ -62,6 +61,16 @@ any,
     //     return responce;
     // }
 })
+export const seenMessages = createAsyncThunk<any, any, { rejectValue: string }>(
+    'seen-messages',
+    async function (chatId, { rejectWithValue }) {
+        const response: any = await axiosClient.post('chat/seen-messages', {chatId:chatId});
+        const data = await response.data;
+        return data;
+    }
+);
+
+
 export const chatSlice = createSlice({
     name: 'chat',
     initialState,
@@ -73,9 +82,8 @@ export const chatSlice = createSlice({
         build.addCase(getUsderChats.fulfilled, (state, action) => {
             state.chat = action.payload
         })
-        // build.addCase(getUsersMessage.fulfilled, (state, action) => {
-        //     state.chat = action.payload
-        // })
+        build.addCase(seenMessages.fulfilled, (state, action) => {
+        })
     }
 })
 export const selectChat = (state: RootState) => state.chat.chat

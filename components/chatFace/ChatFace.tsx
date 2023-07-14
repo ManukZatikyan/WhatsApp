@@ -5,15 +5,21 @@ import Message from '../message/Message'
 import { ScrollView } from 'react-native';
 import { useAppDispatch, useAppSelector } from '../../redux/hook';
 import { selectUser } from '../../redux/auth/authSlice';
-import { add_Message } from '../../redux/chat/chatSlice';
+import { add_Message, seenMessages } from '../../redux/chat/chatSlice';
+import { io, Socket } from 'socket.io-client';
 
-const ChatFace: React.FC<any> = ({ item }: any) => {
+
+const ChatFace: React.FC<any> = ({ item,navigation }: any) => {
   const scrollViewRef = useRef(null)
+  const [socket,setSocket]=useState<Socket>()
   const [newMessage, setNewMessage] = useState('')
   const messages = item?.messages
   const user = useAppSelector(selectUser)
   const chatUser = item?.members[0]
   const dispatch=useAppDispatch()
+  const send=(value:any)=>{
+      socket?.emit('message',value)
+  }
   const addMessage = () => {
     if (newMessage !== '') {
       const messageBody = {
@@ -25,19 +31,38 @@ const ChatFace: React.FC<any> = ({ item }: any) => {
           seen: false
         }
       }
-      
-      console.log(messageBody);
+      send(newMessage)
       dispatch(add_Message(messageBody))
       setNewMessage('')
     }
   }
+  const backToChats=()=>{
+    navigation.navigate('Dashboard')
+  }
   useEffect(() => {
+    const newSocket = io("http://localhost:7001")
+    setSocket(newSocket)
     scrollViewRef.current.scrollToEnd({ animated: true })
-  }, [])
+    
+  }, [setSocket])
+
+
+  const messageListener=()=>{
+    console.log(1);
+    
+  }
+  useEffect(()=>{
+    socket?.on('message',messageListener)
+    return ()=>{
+      socket?.off('message',messageListener)
+    }
+  },[messageListener])
+
+  
   return <View style={styles.container}>
     <View style={styles.userInfo}>
       <View style={styles.userInfo1}>
-        <TouchableOpacity onPress={() => { console.log('back') }}>
+        <TouchableOpacity onPress={() => { backToChats() }}>
           <Image source={require('../../assets/Icons/back.png')} style={styles.back} />
         </TouchableOpacity>
         <TouchableOpacity onPress={() => { console.log('image') }}>
