@@ -7,7 +7,7 @@ import ChatFace from '../../components/chatFace/ChatFace';
 const MessageScreen: React.FC = ({navigation,route}:any) => {
   const { item  } = route.params
  
-  return <ChatFace item={item}/>;
+  return <ChatFace item={item} navigation={navigation}/>;
 }
 
 export default MessageScreen;

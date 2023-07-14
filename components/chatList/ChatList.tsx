@@ -2,9 +2,12 @@ import { View, Image, Text, TouchableOpacity } from 'react-native';
 import { ChatLists } from '../../types/Interface';
 import { styles } from './style';
 import React from 'react';
+import { useAppDispatch } from '../../redux/hook';
+import { seenMessages } from '../../redux/chat/chatSlice';
 
 
 const ChatList: React.FC<ChatLists> = ({ item, index, navigation }: ChatLists) => {
+    const dispatch = useAppDispatch()
     let totalUnread = 0;
     for (let i = item.messages.length - 1; i >= 0; i--) {
         if (item.messages[i].seen === false && item.messages[i].author === item.members[0]._id) {
@@ -14,8 +17,9 @@ const ChatList: React.FC<ChatLists> = ({ item, index, navigation }: ChatLists) =
         }
     }
 
-    const goToMessage=(item:any)=>{
-        navigation.navigate('MessageScreen',{item:item})
+    const goToMessage = (item: any) => {
+        dispatch(seenMessages(item._id))
+        navigation.navigate('MessageScreen', { item: item })
     }
 
 
